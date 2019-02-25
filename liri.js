@@ -37,6 +37,9 @@ function concertThis(artist) {
   });
 }
 function spotifyThisSong(songName) {
+  if (songName === undefined) {
+    songName = "The Sign Ace of Base";
+  }
   spotify.search({ type: "track", query: songName, limit: 1 }, function(
     err,
     data
@@ -53,13 +56,13 @@ function spotifyThisSong(songName) {
       console.log(`Preview Link: ${songsInfo[i].preview_url}`);
       console.log(`Album: ${songsInfo[i].album.name}`);
     }
-    if (songName === undefined) {
-      songName = "The Sign";
-    }
   });
 }
 
 function movieThis(movieName) {
+  if (movieName === undefined) {
+    movieName = "Mr. Nobody";
+  }
   axios
     .get(
       encodeURI(
@@ -69,7 +72,6 @@ function movieThis(movieName) {
       )
     )
     .then(function(response) {
-      // Then we print out the imdbRating
       console.log("Movie Title: " + response.data.Title);
       console.log("Movie Year: " + response.data.Year);
       console.log("Movie Rating via IMDB: " + response.data.imdbRating);
@@ -116,16 +118,3 @@ if (command === "concert-this") {
 } else {
   console.log("invalid command");
 }
-
-// spotifyThisSong("Thank u next");
-
-// switch (command) {
-//   case "concert-this":
-//     console.log("running ct");
-//     break;
-//   case "other":
-//     console.log("other");
-//     break;
-//   default:
-//     console.log("invalid command");
-// }
