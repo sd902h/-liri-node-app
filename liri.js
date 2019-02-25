@@ -58,7 +58,6 @@ function spotifyThisSong(songName) {
     }
   });
 }
-
 function movieThis(movieName) {
   if (movieName === undefined) {
     movieName = "Mr. Nobody";
@@ -85,7 +84,6 @@ function movieThis(movieName) {
     })
     .catch(err => console.error(err));
 }
-
 function didDone() {
   fs.readFile("random.txt", "utf8", function(error, data) {
     if (error) {
